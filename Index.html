@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteCraver - Premium Indian Snacks & Gourmet Treats</title>
+    
+    <!-- SEO Optimization -->
+    <meta name="description" content="Premium Indian snacks, gourmet treats, and handcrafted delicacies. Fresh ingredients, authentic taste. Order online for home delivery.">
+    <meta name="keywords" content="Indian snacks, gourmet treats, south Indian, north Indian, online food delivery, handmade snacks">
+    <meta name="author" content="TasteCraver">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #8BC34A;
+            --primary-dark: #7cb342;
+            --accent: #FFC107;
+            --accent-light: #ffeb3b;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --text: #333;
+            --text-muted: #666;
+            --border: #e0e0e0;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 4px 12px rgba(139, 197, 74, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 197, 74, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent);
+            color: var(--dark);
+            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            animation: slideIn 0.3s ease;
+            z-index: 9999;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-badge {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: var(--dark);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* ========== HERO ========== */
+        #hero {
+            background: linear-gradient(135deg, #f4f7f9 0%, #eff3f7 100%);
+            padding: 140px 0 100px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--text-muted);
+        }
+
+        /* ========== PRODUCTS GRID ========== */
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .card .category {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .card-price {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--light);
+            border-radius: 20px;
+            padding: 4px 8px;
+        }
+
+        .quantity-control button {
+            width: 24px;
+            height: 24px;
+            border: none;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .quantity-control button:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .quantity-control span {
+            width: 24px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* ========== CART MODAL ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--border);
+        }
+
+        .cart-summary {
+            padding: 24px;
+            border-top: 2px solid var(--border);
+            background-color: var(--light);
+            border-radius: 0 0 12px 12px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .summary-row.total {
+            font-size: 1.3rem;
+            color: var(--primary);
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background-color: var(--dark);
+            color: #ecf0f1;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .section { padding: 50px 0; }
+            .card-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .modal-content { width: 95%; max-height: 90vh; }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid { grid-template-columns: 1fr; }
+            .filters { gap: 8px; }
+            .filter-btn { padding: 6px 12px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">🍛 TasteCraver</a>
+                <div class="nav-right">
+                    <button class="cart-badge" id="cartBtn" onclick="openCart()">
+                        <i class="fas fa-shopping-cart" style="font-size: 1.5rem; color: var(--primary); cursor: pointer;"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" style="padding-top: 80px;">
+        <div class="container section">
+            <div class="hero-content text-center">
+                <h1>Taste the Authenticity.</h1>
+                <p>Handcrafted Indian snacks and gourmet treats delivered fresh to your door.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Our Menu</h2>
+            
+            <!-- Filters -->
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="card-grid" id="productsGrid">
+                <!-- Products loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CART MODAL -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 Your Cart</h2>
+                <button class="close-btn" onclick="closeCart()">×</button>
+            </div>
+            
+            <div class="modal-body" id="cartBody">
+                <!-- Cart items loaded by JavaScript -->
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">RM0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery:</span>
+                    <span id="delivery">Free</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">RM0</span>
+                </div>
+                <button class="btn btn-primary checkout-btn" onclick="sendToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Send Order to WhatsApp
+                </button>
+                <button class="btn btn-secondary checkout-btn" onclick="closeCart()" style="margin-top: 8px;">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About TasteCraver</h3>
+                    <p>Premium Indian snacks and gourmet treats delivered fresh to your door.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#products">Menu</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <a href="tel:+60135532805">📱 +60 135532805</a>
+                    <a href="mailto:hello@tastecraver.com">📧 hello@tastecraver.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TasteCraver. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // =====================================================
+        // 📦 PRODUCT DATABASE (JSON FORMAT)
+        // =====================================================
+        const products = [
+            {
+                id: 1,
+                name: "Meals+Chicken",
+                category: "Main Course",
+                price: 15,
+                description: "Ponni Rice+Fried Chicken+1 Vegetable+Pappad",
+                emoji: "🍚🍵",
+                image: null
+            },
+	    {
+                id: 2,
+                name: "Meals+Fish",
+                category: "Main Course",
+                price: 17,
+                description: "Ponni Rice+Tingerri Fish+1 Vegetable+Pappad",
+                emoji: "🍚🍵",
+                image: null
+            },
+	    {
+                id: 3,
+                name: "Meals+Mutton",
+                category: "Main Course",
+                price: 17.5,
+                description: "Ponni Rice+Mutton+1 Vegetable+Pappad",
+                emoji: "🍚🍵",
+                image: null
+            },
+	    {
+                id: 4,
+                name: "Meals Vegeterian",
+                category: "Main Course",
+                price: 12,
+                description: "Ponni Rice+2 Vegetable+Pappad",
+                emoji: "🍚🍵",
+                image: null
+            },
+	    {
+                id: 5,
+                name: "Muruku",
+                category: "Snacks",
+                price: 5,
+                description: "5Pcs of Muruku",
+                emoji: "🥨",
+                image: null
+            },
+
+            {
+                id: 6,
+                name: "Spiced Snack Mix",
+                category: "Snacks",
+                price: 399,
+                description: "Authentic blend of spices from across the subcontinent.",
+                emoji: "🌶️",
+                image: null
+            },
+            {
+                id: 7,
+                name: "Artisan Bread Basket",
+                category: "Bakery",
+                price: 599,
+                description: "Selection of sourdough, multigrain, and rosemary loaves.",
+                emoji: "🍞",
+                image: null
+            },
+            {
+                id: 8,
+                name: "Samosa Deluxe Pack",
+                category: "Snacks",
+                price: 449,
+                description: "Golden fried samosas with potato and pea filling.",
+                emoji: "🥟",
+                image: null
+            },
+            {
+                id: 9,
+                name: "Gulab Jamun Box",
+                category: "Sweets",
+                price: 350,
+                description: "Soft and spongy gulab jamuns in sugar syrup.",
+                emoji: "🍮",
+                image: null
+            },
+            {
+                id: 10,
+                name: "Namkeen Collection",
+                category: "Snacks",
+                price: 199,
+                description: "Mix of savory snacks: chakli, namak pare, and more.",
+                emoji: "🥨",
+                image: null
+            },
+            {
+                id: 11,
+                name: "Mango Lassi Pack",
+                category: "Beverages",
+                price: 129,
+                description: "Refreshing yogurt-based drink with fresh mango pulp.",
+                emoji: "🥤",
+                image: null
+            },
+            {
+                id: 12,
+                name: "Barfi Assortment",
+                category: "Sweets",
+                price: 499,
+                description: "Mixture of milk-based barfis: kaju, coconut, and besan.",
+                emoji: "🍫",
+                image: null
+            },
+            {
+                id: 13,
+                name: "Papad Pack",
+                category: "Snacks",
+                price: 179,
+                description: "Crispy papads with various flavors and spice levels.",
+                emoji: "🍪",
+                image: null
+            },
+            {
+                id: 14,
+                name: "Kheer Mix",
+                category: "Beverages",
+                price: 159,
+                description: "Rice pudding mix with cardamom and cashew garnish.",
+                emoji: "🍚",
+                image: null
+            },
+            {
+                id: 15,
+                name: "Masala Peanuts",
+                category: "Snacks",
+                price: 119,
+                description: "Roasted peanuts coated with tangy masala spices.",
+                emoji: "🥜",
+                image: null
+            },
+            {
+                id: 16,
+                name: "Jaggery Fudge",
+                category: "Sweets",
+                price: 279,
+                description: "Organic jaggery-based fudges with nuts.",
+                emoji: "🍯",
+                image: null
+            },
+            {
+                id: 17,
+                name: "Jilebi",
+                category: "Hot",
+                price: 5,
+                description: "Jilebi with hot, when you order we will prepare and send you",
+                emoji: "🍯",
+                image: null
+            }
+        ];
+
+        // =====================================================
+        // 🛒 CART MANAGEMENT
+        // =====================================================
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let currentFilter = 'all';
+
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function addToCart(productId, quantity = 1) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+
+            updateCart();
+            showToast(`✅ ${product.name} added to cart!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+            renderCart();
+            showToast('🗑️ Item removed from cart');
+        }
+
+        function updateQuantity(productId, quantity) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                if (quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    item.quantity = quantity;
+                    updateCart();
+                    renderCart();
+                }
+            }
+        }
+
+        // =====================================================
+        // 🎯 RENDER PRODUCTS
+        // =====================================================
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const filtersContainer = document.getElementById('filters');
+            
+            // Get unique categories
+            const categories = ['all', ...new Set(products.map(p => p.category))];
+            
+            // Render filters
+            filtersContainer.innerHTML = categories.map(cat => 
+                `<button class="filter-btn ${cat === 'all' ? 'active' : ''}" data-filter="${cat}" onclick="filterProducts('${cat}')">${cat === 'all' ? 'All Products' : cat}</button>`
+            ).join('');
+
+            // Render products
+            const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
+            
+            grid.innerHTML = filtered.map(product => `
+                <div class="card">
+                    <div class="card-image">${product.emoji}</div>
+                    <div class="card-content">
+                        <div class="category">${product.category}</div>
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-price">RM${product.price}</span>
+                        <div class="quantity-control">
+                            <button onclick="addToCart(${product.id})">+</button>
+                            <span id="qty-${product.id}">0</span>
+                            <button onclick="openCart()">🛒</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            updateQuantityDisplay();
+        }
+
+        function filterProducts(category) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === category) {
+                    btn.classList.add('active');
+                }
+            });
+            renderProducts();
+        }
+
+        function updateQuantityDisplay() {
+            products.forEach(product => {
+                const item = cart.find(c => c.id === product.id);
+                const qty = item ? item.quantity : 0;
+                const elem = document.getElementById(`qty-${product.id}`);
+                if (elem) elem.textContent = qty;
+            });
+        }
+
+        // =====================================================
+        // 💳 RENDER CART
+        // =====================================================
+        function renderCart() {
+            const cartBody = document.getElementById('cartBody');
+            
+            if (cart.length === 0) {
+                cartBody.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Add some delicious items to get started!</p>
+                    </div>
+                `;
+                document.getElementById('subtotal').textContent = 'RM0';
+                document.getElementById('total').textContent = 'RM0';
+                return;
+            }
+
+            cartBody.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">RM${item.price} × ${item.quantity}</div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-control">
+                            <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})">−</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                        </div>
+                        <button style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 1.2rem;" onclick="removeFromCart(${item.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Calculate totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = 0; // Free delivery
+            const total = subtotal + delivery;
+
+            document.getElementById('subtotal').textContent = `RM${subtotal}`;
+            document.getElementById('delivery').textContent = 'Free';
+            document.getElementById('total').textContent = `RM${total}`;
+        }
+
+        // =====================================================
+        // 📱 WHATSAPP INTEGRATION (FREE METHOD)
+        // =====================================================
+        function sendToWhatsApp() {
+            if (cart.length === 0) {
+                showToast('❌ Your cart is empty!');
+                return;
+            }
+
+            // Prepare order message
+            let orderMessage = "🍛 *TasteCraver Order*\n\n";
+            orderMessage += "📋 *Order Details:*\n";
+            orderMessage += "─────────────────\n";
+
+            cart.forEach(item => {
+                orderMessage += `• ${item.name}\n`;
+                orderMessage += `  Qty: ${item.quantity} × RM${item.price}\n`;
+            });
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            orderMessage += "─────────────────\n";
+            orderMessage += `*Total: RM${subtotal}*\n\n`;
+            orderMessage += "👤 Please enter your details:\n";
+            orderMessage += "• Name:\n";
+            orderMessage += "• Phone:\n";
+            orderMessage += "• Address:\n";
+            orderMessage += "• Delivery Time:\n\n";
+            orderMessage += "_We'll confirm your order shortly!_";
+
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(orderMessage);
+            
+            // YOUR WHATSAPP NUMBER (Update this with your actual number)
+            const businessPhoneNumber = "60135532805"; // Format: country code + number without +
+            
+            // WhatsApp Web link (free method)
+            const whatsappLink = `https://wa.me/${businessPhoneNumber}?text=${encodedMessage}`;
+
+            // Open WhatsApp
+            window.open(whatsappLink, '_blank');
+            
+            showToast('✅ Opening WhatsApp...');
+            
+            // Optional: Clear cart after sending
+            setTimeout(() => {
+                cart = [];
+                updateCart();
+                renderCart();
+                closeCart();
+            }, 1000);
+        }
+
+        // =====================================================
+        // 🎛️ UI CONTROLS
+        // =====================================================
+        function openCart() {
+            renderCart();
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // Close modal on outside click
+        document.getElementById('cartModal').addEventListener('click', (e) => {
+            if (e.target.id === 'cartModal') closeCart();
+        });
+
+        // =====================================================
+        // 🚀 INITIALIZE
+        // =====================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCart();
+        });
+    </script>
+
+</body>
+</html>
